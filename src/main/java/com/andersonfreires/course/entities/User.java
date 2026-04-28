@@ -1,10 +1,11 @@
 package com.andersonfreires.course.entities;
 
 import java.io.Serializable;
-import java.security.KeyStore.PrivateKeyEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +29,7 @@ public class User implements Serializable   {
 	private String phoneString;
 	private String passwordString;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "clientUser")
 	private List<Order> orders=new ArrayList<>();
 	
@@ -36,7 +38,6 @@ public class User implements Serializable   {
 	}
 	
 	public User() {
-		super();
 	}
 	public User(Long idLong, String nameString, String emailString, String phoneString, String passwordString) {
 		super();
