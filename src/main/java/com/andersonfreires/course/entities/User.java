@@ -2,12 +2,15 @@ package com.andersonfreires.course.entities;
 
 import java.io.Serializable;
 import java.security.KeyStore.PrivateKeyEntry;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -24,6 +27,14 @@ public class User implements Serializable   {
 	private String emailString;
 	private String phoneString;
 	private String passwordString;
+	
+	@OneToMany(mappedBy = "clientUser")
+	private List<Order> orders=new ArrayList<>();
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+	
 	public User() {
 		super();
 	}
