@@ -42,9 +42,9 @@ public class TestConfig  implements CommandLineRunner{
 		Category cat3=new Category(null,"Computers");
 		
 		Product product1 = new Product(null,"Java", " Learn java",90.5, "");
-		Product product2 = new Product(null,"Spring boot", "Framework ",50.5, " ");
-		Product product3 = new Product(null,"Angular", "Framework ",60.5, " ");
-		Product product4 = new Product(null,"Html", "Language mark ",100.5, " ");
+		Product product2 = new Product(null,"Smart TV", "Com Android",5000.5, " ");
+		Product product3 = new Product(null,"MacBook Pro", "Última geração",6000.5, " ");
+		Product product4 = new Product(null,"PV Gamer", "Com 64GB",10000.5, " ");
 		Product product5 = new Product(null,"Css", "Stile ",70.5, " ");
 		
 		User u1=new User(null,"Maria Luiza","malu@gmail","966546554","123456");
@@ -58,6 +58,18 @@ public class TestConfig  implements CommandLineRunner{
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 		productRepository.saveAll(Arrays.asList(product1,product2,product3,product4,product5));
+	
+		product1.getCategories().add(cat2);
+		product2.getCategories().add(cat1);
+		product2.getCategories().add(cat3);
+		
+		product3.getCategories().add(cat3);
+		product4.getCategories().add(cat3);
+		product5.getCategories().add(cat2);
+		
+		productRepository.saveAll(Arrays.asList(product1,product2,product3,product4,product5));
+		
+		
 	}
 	
 	
